@@ -7,6 +7,9 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const cartIcon= document.querySelector('.navbar-shopping-cart');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 
+const productDetailContainer = document.querySelector('#productDetail');
+const productDetailCloseIcon = document.querySelector('.product-detail-close');
+
 const cardsContainer= document.querySelector('.cards-container');
 
 // Desktop menu(toggle) 
@@ -21,6 +24,13 @@ function toggleDesktopMenu(){
         shoppingCartContainer.classList.toggle('inactive');
 
     }
+
+    if(!productDetailContainer.classList.contains('inactive')){
+
+        productDetailContainer.classList.toggle('inactive');
+
+    }
+
 }
 
 // Mobile Menu (toggle)
@@ -34,6 +44,12 @@ function toggleMobileMenu(){
     if(!shoppingCartContainer.classList.contains('inactive')){
 
         shoppingCartContainer.classList.toggle('inactive');
+
+    }
+
+    if(!productDetailContainer.classList.contains('inactive')){
+
+        productDetailContainer.classList.toggle('inactive');
 
     }
 }
@@ -57,6 +73,36 @@ function toggleCartMenu(){
         desktopMenu.classList.toggle('inactive');
 
     }
+
+    if(!productDetailContainer.classList.contains('inactive')){
+
+        productDetailContainer.classList.toggle('inactive');
+
+    }
+}
+
+// Product Detail card
+
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
+
+function openProductDetailAside(){
+
+    productDetailContainer.classList.remove('inactive');
+
+
+    if(!desktopMenu.classList.contains('inactive')){
+
+        desktopMenu.classList.toggle('inactive');
+
+    }
+
+}
+
+
+
+function closeProductDetailAside(){
+
+    productDetailContainer.classList.add('inactive');
 }
 
 
@@ -96,6 +142,7 @@ for(product of productList){
 
     const productImg = document.createElement('img');
     productImg.setAttribute('src', product.image);
+    productImg.addEventListener('click', openProductDetailAside);
 
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
