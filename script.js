@@ -89,7 +89,6 @@ function openProductDetailAside(){
 
     productDetailContainer.classList.remove('inactive');
 
-
     if(!desktopMenu.classList.contains('inactive')){
 
         desktopMenu.classList.toggle('inactive');
